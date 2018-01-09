@@ -1,6 +1,6 @@
 # xdebug-shell
 
-Exploting xdebug to get command execution is not new:
+Exploiting xdebug to get remote command execution is not new:
 
 * https://redshark1802.com/blog/2015/11/13/xpwn-exploiting-xdebug-enabled-servers/
 * https://ricterz.me/posts/Xdebug:%20A%20Tiny%20Attack%20Surface
@@ -11,7 +11,7 @@ It is always cool to have a webshell.
 
 Xdebug is a php extension that allows to debug php pages, remotely by using DGBp protocol. Code repository is located at [xdebug](https://github.com/xdebug/xdebug).
 
-Code execution is possible via injections that exist in eval or property_get xdebug commands.
+Code execution is possible via injections that exist in `eval` or `property_get` xdebug commands.
 
 ## How to activate it ?
 
@@ -22,11 +22,7 @@ xdebug.remote_enable=true
 xdebug.remote_connect_back=true
 ```
 
-In order to start xdebug, add `XDEBUG_SESSION_START` to query parameters.
-
-## How does it work ?
-
-Remote server will try to connect back to user on port tcp/9000. The endpoint where to connect to can be altered using `X-Forwarded-For` header. For example, if using Docker for Mac to run the xdebug Docker image supplied, you may use docker.for.mac.localhost as value.
+In order to start xdebug, add `XDEBUG_SESSION_START` to query parameters. Remote server will try to connect back to user on port tcp/9000. The endpoint where to connect to can be altered using `X-Forwarded-For` header. For example, if using Docker for Mac to run the xdebug Docker image supplied, you may use `docker.for.mac.localhost` as value.
 
 ## How to start a Docker vulnerable image ?
 
@@ -52,6 +48,10 @@ uid=48(apache) gid=48(apache) groups=48(apache)
 Linux b8db2353f675 4.9.60-linuxkit-aufs #1 SMP Mon Nov 6 16:00:12 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 >> cat /etc/redhat-release
 CentOS Linux release 7.4.1708 (Core)
+>> lsmod
+Module                  Size  Used by
+xfrm_user              32768  1
+xfrm_algo              16384  1 xfrm_user
 >> ^D
 ```
 
