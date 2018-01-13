@@ -55,3 +55,12 @@ xfrm_algo              16384  1 xfrm_user
 >> ^D
 ```
 
+## How to scan for xdebug ?
+
+You can use this mitmproxy script [activate-xdebug.py](activate-xdebug.py):
+
+```
+$ mitmdump -dd -s "./activate-xdebug.py docker.for.mac.localhost"
+```
+
+The script will add xdebug parameter, and add X-Forwarded-For header for the reverse connect to succeed.
