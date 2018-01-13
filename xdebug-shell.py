@@ -14,10 +14,11 @@ import random
 import string
 
 parser = argparse.ArgumentParser()
-parser.add_argument('url')
-parser.add_argument('-l', '--local-host', help='local fqdn or IP address where xdebug will connect to on port 9000', default=None)
+parser.add_argument('-l', '--local-host',
+  help='local fqdn or IP address where xdebug will connect to on port 9000', default=None)
+parser.add_argument('-u', '--url',
+  help='url to activate xdebug on', default=None)
 args = parser.parse_args()
-
 
 sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sk.bind(('0.0.0.0', 9000))
@@ -42,7 +43,8 @@ def start_xdebug(url, lhost):
     )
   assert(r.status_code >= 200 and r.status_code < 300)
 
-thread.start_new_thread(start_xdebug, (args.url, args.local_host))
+if args.url is not None:
+  thread.start_new_thread(start_xdebug, (args.url, args.local_host))
 
 conn, addr = sk.accept()
 
