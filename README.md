@@ -11,7 +11,7 @@ It is always cool to have a webshell.
 
 Xdebug is a php extension that allows to debug php pages, remotely by using DGBp protocol. Code repository is located at [xdebug](https://github.com/xdebug/xdebug).
 
-Code execution is possible via injections that exist in `eval` or `property_get` xdebug commands.
+Code execution is possible via injections that exist in `eval` or `property_set` xdebug commands.
 
 ## How to activate it ?
 
