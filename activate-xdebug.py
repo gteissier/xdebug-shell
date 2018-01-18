@@ -11,6 +11,8 @@ def rand_id(n=6):
   return r
 
 class XdebugActivator:
+  '''Define a request method that adds X-Forwarded-For header and XDEBUG_SESSION_START parameter.
+This shall activate xdebug and requires it to connect back to attacker.'''
   def __init__(self, connect_to):
     self.connect_to = connect_to
 
